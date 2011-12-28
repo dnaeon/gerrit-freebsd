@@ -1,0 +1,9 @@
+Gerrit has been installed.
+
+To enable Gerrit during boot-time add the following line to /etc/rc.conf:
+
+	gerrit_enable="YES"
+
+For more information on Gerrit, please check the online documentation:
+
+WWW:	http://gerrit-documentation.googlecode.com/svn/Documentation/2.2.0/index.html
