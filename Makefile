@@ -17,10 +17,13 @@ EXTRACT_ONLY=
 MAINTAINER=	dnaeon@gmail.com
 COMMENT=	Web based code review and project management for Git based projects.
 
-RUN_DEPENDS+=	bash:${PORTSDIR}/shells/bash
+RUN_DEPENDS+=	bash:${PORTSDIR}/shells/bash \
+		git:${PORTSDIR}/devel/git
 
 USE_JAVA=	yes
 JAVA_VERSION=	1.5+
+
+USE_PERL5=	yes
 
 FETCH_ARGS=	-Fpr
 NO_BUILD=	yes
