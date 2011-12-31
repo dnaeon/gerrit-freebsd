@@ -36,6 +36,8 @@ start_precmd="gerrit_prestart"
 start_cmd="gerrit_start"
 stop_cmd="gerrit_stop"
 
+PATH="${PATH}:/usr/local/bin"
+
 gerrit_prestart() {
 	if [ ! -d "${gerrit_home}" ]; then
 		install -d -o "${gerrit_user}" -g "${gerrit_group}" -m 750 "${gerrit_home}"
