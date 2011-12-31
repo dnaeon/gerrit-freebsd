@@ -35,8 +35,12 @@ GERRIT_USER?=	gerrit
 GERRIT_GROUP?=	gerrit
 GERRIT_SITE?=	review_site
 
+.if ${GERRIT_USER} == "gerrit"
 USERS=	${GERRIT_USER}
+.endif
+.if ${GERRIT_GROUP} == "gerrit"
 GROUPS=	${GERRIT_GROUP}
+.endif
 
 PLIST_FILES=	%%DATADIR%%/${PORTNAME}${EXTRACT_SUFX}
 PLIST_DIRS=	%%DATADIR%%
