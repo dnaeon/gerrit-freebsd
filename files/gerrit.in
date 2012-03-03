@@ -7,7 +7,7 @@
 # KEYWORD: shutdown
 
 #
-# Add the following line to /etc/rc.conf to enable the Gerrit daeamon:
+# Add the following line to /etc/rc.conf to enable the Gerrit daemon:
 #
 # gerrit_enable="YES"
 #
