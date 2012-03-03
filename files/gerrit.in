@@ -27,9 +27,10 @@ load_rc_config "${name}"
 : ${gerrit_group="%%GROUPS%%"}
 : ${gerrit_site="%%GERRIT_HOME%%/%%GERRIT_SITE%%"}
 
+pidfile="${gerrit_site}/logs/gerrit.pid"
+procname="GerritCodeReview"
 command="${gerrit_site}/bin/gerrit.sh"
 java_cmd="${gerrit_java_home}/bin/java"
-procname="GerritCodeReview"
 required_files="${java_cmd}"
 
 start_precmd="gerrit_prestart"
@@ -40,12 +41,15 @@ PATH="${PATH}:/usr/local/bin"
 
 gerrit_prestart() {
 	if [ ! -d "${gerrit_home}" ]; then
+		# initialize Gerrit if the home directory is missing
 		install -d -o "${gerrit_user}" -g "${gerrit_group}" -m 750 "${gerrit_home}"
-	fi
-	# initialize Gerrit if the site directory is missing
-	if [ ! -d "${gerrit_site}" ]; then
+	
 		echo "No Gerrit site found. Will initialize Gerrit first..."
 		/usr/bin/su - ${gerrit_user} -c "${java_cmd} -jar %%DATADIR%%/gerrit.war init -d ${gerrit_site}"
+
+		# once initialized Gerrit will start up automatically
+		rc_pid=`check_pidfile ${pidfile} ${procname}`
+		[ -n "${rc_pid}" ] && return 1 || return 0
 	fi
 }
 
