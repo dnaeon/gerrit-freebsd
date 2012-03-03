@@ -23,8 +23,8 @@ load_rc_config "${name}"
 : ${gerrit_home="%%GERRIT_HOME%%"}
 : ${gerrit_args=""}
 : ${gerrit_java_home="%%JAVA_HOME%%"}
-: ${gerrit_user="%%GERRIT_USER%%"}
-: ${gerrit_group="%%GERRIT_GROUP%%"}
+: ${gerrit_user="%%USERS%%"}
+: ${gerrit_group="%%GROUPS%%"}
 : ${gerrit_site="%%GERRIT_HOME%%/%%GERRIT_SITE%%"}
 
 command="${gerrit_site}/bin/gerrit.sh"
